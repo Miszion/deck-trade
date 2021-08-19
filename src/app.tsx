@@ -1,6 +1,7 @@
 import React from 'react'
 import './app.scss'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Logo from './assets/logos/logo'
 
 const App = (props: any) => {
     return (
@@ -11,6 +12,7 @@ const App = (props: any) => {
                         <div className='home'>
                             This is home!
                         </div>
+                        <Logo className='header-logo' color="#434343"></Logo>
                     </Route>
                     <Route exact path='/signup'>
                         <div className='home'>
