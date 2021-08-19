@@ -1,0 +1,26 @@
+{
+  "name": "deck-trade",
+  "version": "1.0.0",
+  "description": "An online card trading platform.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Miszion/deck-trade.git"
+  },
+  "author": "Mission Marcus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Miszion/deck-trade/issues"
+  },
+  "homepage": "https://github.com/Miszion/deck-trade#readme",
+  "dependencies": {
+    "node-sass": "^6.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3",
+    "typescript": "^4.3.5"
+  }
+}
