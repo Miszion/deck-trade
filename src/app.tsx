@@ -1,18 +1,18 @@
 import React from 'react'
 import './app.scss'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Logo from './assets/logos/logo'
+import Header from './components/header/header'
 
 const App = (props: any) => {
     return (
         <div className='app'>
             <Router>
+                <Header></Header>
                 <Switch>
                     <Route exact path='/'>
                         <div className='home'>
                             This is home!
                         </div>
-                        <Logo className='header-logo' color="#434343"></Logo>
                     </Route>
                     <Route exact path='/signup'>
                         <div className='home'>
