@@ -1,0 +1,40 @@
+.info {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 300px;
+    align-items: center;
+    font-family: 'Quicksand', sans-serif;
+    color: #20232a;
+    justify-content: space-evenly;
+}
+
+
+.info-circle {
+    height: 150px;
+    border: 1px solid #eeeeee;
+    width: 150px;
+    border-radius: 300px;
+    --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+        height: 100px;
+    }
+
+}
+
+.info-title {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.info-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    width: 200px;
+}

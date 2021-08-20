@@ -7,15 +7,19 @@ const Header = (props: any) => {
     return (
         <div className='header'>
             <div className='header-container'>
-                <Link to='/' className='logo-link'>
-                    <Logo className='header-logo' color="#20232a"></Logo>
-                </Link>
-                <div className='menu-items'>
-                    <Link to='/' className='header-item'>Trade</Link>
-                    <Link to='/' className='header-item'>Company</Link>
-                    <Link to='/' className='header-item'>Account</Link>
+                <div className='header-logo-container'>
+                    <Link to='/' className='logo-link'>
+                        <Logo className='header-logo' color="#20232a"></Logo>
+                    </Link>
                 </div>
-                <Button color="#ffffff" textColor="#20232a" text="Sign Up"></Button>
+                <div className='header-right'>
+                    <div className='menu-items'>
+                        <Link to='/' className='header-item'>Trade</Link>
+                        <Link to='/' className='header-item'>Company</Link>
+                        <Link to='/' className='header-item'>Account</Link>
+                    </div>
+                    <Button color="#ffffff" textColor="#20232a" text="Sign Up"></Button>
+                </div>
             </div>
         </div>
     )
