@@ -2,6 +2,7 @@ import React from 'react'
 import './app.scss'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './components/header/header'
+import LandingPage from './screens/landing/landing'
 
 const App = (props: any) => {
     return (
@@ -10,9 +11,7 @@ const App = (props: any) => {
                 <Header></Header>
                 <Switch>
                     <Route exact path='/'>
-                        <div className='home'>
-                            This is home!
-                        </div>
+                        <LandingPage></LandingPage>
                     </Route>
                     <Route exact path='/signup'>
                         <div className='home'>
