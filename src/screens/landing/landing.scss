@@ -23,6 +23,8 @@
     justify-content: center;
     align-items: center;
     width: 50%;
+    opacity: 0;
+    animation: float-right 1s .6s ease-out forwards;
 
     @media screen and (max-width: 1100px){
         width: 500px;
@@ -70,6 +72,13 @@
     margin-top: 25px;
     margin-bottom: 25px;
     line-height: 1.9;
+    opacity: 0;
+    animation: float-in 1s .3s ease-out forwards;
+}
+
+.button-landing {
+    opacity: 0;
+    animation: float-in 1s .3s ease-out forwards;
 }
 
 .landing-text {
@@ -77,10 +86,38 @@
     flex-direction: column;
     max-width: 500px;
     color: #20232a;
+
+    @media screen and (max-width: 1100px){
+        margin-bottom: 50px;
+    }
+
 }
 
 .landing-headline {
     font-size: 4rem;
     font-family: 'Quicksand', sans-serif;
     font-weight: 800;
+    animation: float-in 1s ease-out forwards;
+}
+
+@keyframes float-in {
+    from {
+        opacity: 0;
+        transform: translateY(-35px)
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px)
+    }
+}
+
+@keyframes float-right {
+    from {
+        opacity: 0;
+        transform: translateX(-35px)
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px)
+    }
 }

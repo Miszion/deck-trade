@@ -18,7 +18,9 @@ const Landing = (props: any) => {
                     <div className='landing-subtitle'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     </div>
-                    <Button text='Trade' color='#1679D3' textColor="#ffffff"></Button>
+                    <div className='button-landing'>
+                        <Button text='Trade' color='#1679D3' textColor="#ffffff"></Button>
+                    </div>
                 </div>
                 <div className='landing-image'>
                     <LandingImage></LandingImage>
