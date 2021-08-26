@@ -2,6 +2,7 @@ import React from 'react'
 import './app.scss'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './components/header/header'
+import Footer from './components/footer/footer'
 import LandingPage from './screens/landing/landing'
 
 const App = (props: any) => {
@@ -39,6 +40,7 @@ const App = (props: any) => {
                         </div>
                     </Route>
                 </Switch>
+                <Footer></Footer>
             </Router>
         </div>
     )

@@ -1,0 +1,33 @@
+.input {
+
+    display: flex;
+    flex-direction: column;
+
+    label {
+        margin-bottom: 15px;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    input {
+        padding-left: 10px;
+        padding-top: 15px;
+        font-size: 16px;
+        font-family: 'Quicksand', sans-serif;
+        padding-bottom: 15px;
+        min-width: 200px;
+        border-radius: 10px;
+        border: 1px solid #eeeeee;
+        --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+
+        &:focus {
+            outline: none;
+            border: 1px solid #eeeeee;
+        }
+
+    }
+
+
+}

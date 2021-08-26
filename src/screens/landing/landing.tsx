@@ -6,6 +6,8 @@ import { ReactComponent as Trade} from '../../assets/images/trade.svg'
 import { ReactComponent as Business} from '../../assets/images/business.svg'
 import Info from '../../components/info/info'
 import Button from '../../components/button/button'
+import Input from '../../components/input/input'
+
 import './landing.scss'
 
 const Landing = (props: any) => {
@@ -59,6 +61,22 @@ const Landing = (props: any) => {
                     </div>
                 </div>
                 <Business></Business>
+            </div>
+            <div className='landing-submission'>
+                <div className='landing-submission-text'>
+                    <div className='landing-submission-headline'>
+                        Sign up for our mailing list
+                    </div>
+                    <div className='landing-submission-subtext'>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
+                    </div>
+                </div>
+                <div className='landing-submission-block'>
+                    <div className='landing-submission-input'>
+                        <Input label='Email' type='email'></Input>
+                    </div>
+                    <Button text="Sign Up" color='#8B16D3' textColor='white'></Button>
+                </div>
             </div>
         </div>
     )
