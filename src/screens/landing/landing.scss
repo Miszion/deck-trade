@@ -22,6 +22,11 @@
 
 }
 
+.landing-info-button {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 .landing-image {
     display: flex;
     justify-content: center;
@@ -37,6 +42,45 @@
     @media screen and (max-width: 500px){
         width: 100%;
     }
+
+}
+
+.landing-info-panel {
+    margin-top: 50px;
+}
+
+.landing-info-text {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-image: linear-gradient(to bottom, #ffffff, #eeeeee)
+}
+
+.landing-info-headline {
+    font-size: 2rem;
+    font-weight: 700;
+    max-width: 500px;
+    font-family: 'Quicksand', sans-serif;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+
+    @media screen and (max-width: 500px) {
+        max-width: 300px;
+    }   
+
+}
+
+.landing-info-subtext {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.9;
+    font-family: 'Quicksand', sans-serif;
+
+    @media screen and (max-width: 500px) {
+        max-width: 300px;
+    }   
 
 }
 

@@ -3,6 +3,7 @@ import { ReactComponent as LandingImage} from '../../assets/images/landing-image
 import { ReactComponent as CloudUpload} from '../../assets/images/cloud-upload.svg'
 import { ReactComponent as MagnifyingGlass} from '../../assets/images/magnifying-glass.svg'
 import { ReactComponent as Trade} from '../../assets/images/trade.svg'
+import { ReactComponent as Business} from '../../assets/images/business.svg'
 import Info from '../../components/info/info'
 import Button from '../../components/button/button'
 import './landing.scss'
@@ -44,6 +45,20 @@ const Landing = (props: any) => {
                         <Trade/>
                     </Info>
                 </div>
+                <div className='landing-info-button'>
+                    <Button text="LEARN MORE" color='#8B16D3' textColor='white'></Button>
+                </div>
+            </div>
+            <div className='landing-info-panel'>
+                <div className='landing-info-text'>
+                    <div className='landing-info-headline'>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    </div>
+                    <div className='landing-info-subtext'>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
+                    </div>
+                </div>
+                <Business></Business>
             </div>
         </div>
     )
