@@ -1,11 +1,12 @@
 import './button.scss'
+import { Link } from 'react-router-dom'
 const Button = (props: any) => {
 
-    const {text, color, textColor, onClick} = props
+    const {text, color, textColor, onClick, link} = props
 
     return (
         <div className='button' style={{color: textColor, backgroundColor: color}} onClick={onClick}>
-            {text}
+            {link ? <Link to={link}>{text}</Link> : text }
         </div>
     )
 

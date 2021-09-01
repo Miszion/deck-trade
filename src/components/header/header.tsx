@@ -22,7 +22,7 @@ const Header = (props: any) => {
                         <Link to='/' className='header-item'>Company</Link>
                         <Link to='/' className='header-item'>Account</Link>
                     </div>
-                    <Button color="#ffffff" textColor="#20232a" text="Sign Up"></Button>
+                    <Button color="#ffffff" textColor="#20232a" text="Sign Up" link='/signup'></Button>
                 </div>
             </div>
             <div className='header-container-mobile'>

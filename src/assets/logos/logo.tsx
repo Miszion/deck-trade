@@ -1,5 +1,4 @@
-
-const Logo = (props) => {
+const Logo = (props: any) => {
 
     const { className, color } = props
 

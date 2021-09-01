@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './components/header/header'
 import Footer from './components/footer/footer'
 import LandingPage from './screens/landing/landing'
+import SignUp from './screens/sign-up/sign-up'
 
 const App = (props: any) => {
     return (
@@ -12,12 +13,10 @@ const App = (props: any) => {
                 <Header></Header>
                 <Switch>
                     <Route exact path='/'>
-                        <LandingPage></LandingPage>
+                        <LandingPage/>
                     </Route>
                     <Route exact path='/signup'>
-                        <div className='home'>
-                            This is sign up!
-                        </div>
+                        <SignUp/>
                     </Route>
                     <Route exact path='/signin'>
                         <div className='home'>
