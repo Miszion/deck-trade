@@ -19,30 +19,32 @@ const App = (props: any) => {
             <div className='app'>
                 <Router>
                     <Header></Header>
-                    <Switch>
-                        <Route exact path='/'>
-                            <LandingPage/>
-                        </Route>
-                        <Route exact path='/signup'>
-                            <SignUp/>
-                        </Route>
-                        <Route exact path='/signin'>
-                            <SignIn/>
-                        </Route>
-                        <Route exact path='/dashboard'>
-                            <div className='home'>
-                                This is the dashboard!
-                            </div>
-                        </Route>
-                        <Route exact path='/profile/:user_id'>
-                            <div className='home'>
-                                This is the user's profile
-                            </div>
-                        </Route>
-                        <Route exact path='/confirm'>
-                            <Confirm></Confirm>
-                        </Route>
-                    </Switch>
+                    <div className='app-body'>
+                        <Switch>
+                            <Route exact path='/'>
+                                <LandingPage/>
+                            </Route>
+                            <Route exact path='/signup'>
+                                <SignUp/>
+                            </Route>
+                            <Route exact path='/signin'>
+                                <SignIn/>
+                            </Route>
+                            <Route exact path='/dashboard'>
+                                <div className='home'>
+                                    This is the dashboard!
+                                </div>
+                            </Route>
+                            <Route exact path='/profile/:user_id'>
+                                <div className='home'>
+                                    This is the user's profile
+                                </div>
+                            </Route>
+                            <Route exact path='/confirm'>
+                                <Confirm></Confirm>
+                            </Route>
+                        </Switch>
+                    </div>
                     <Footer></Footer>
                 </Router>
             </div>

@@ -1,6 +1,10 @@
 .header {
     height: 75px;
     width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    background-color: #ffffff;
     border-bottom: 1px solid #eeeeee;
 }
 
@@ -28,17 +32,27 @@
 
 .side-menu {
     height: 100%;
-    position: absolute;
-    width: 250px;
+    position: fixed;
+    width: 300px;
     display: none;
     top: 75px;
-    z-index: 1;
+    z-index: 9999;
     background-color: white;
-    transition: left .3s ease-out;
+    border-right: 1px solid #eeeeee;
+    overflow: hidden;
+    transition: left .3s ease-in-out;
     @media screen and (max-width: 800px){
         display: flex;
+        flex-direction: column;
     }
 
+    &-button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 35px;
+    }
 
 
 }
@@ -47,6 +61,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-top: 100px;
     align-items: center;
     font-family: 'Quicksand', sans-serif;
     font-weight: 600;
