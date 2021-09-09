@@ -1,14 +1,17 @@
 import './sign-up.scss'
 import Radio from '../../components/radio/radio';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Input from '../../components/input/input';
 import Button from '../../components/button/button'
-import signUp from '../../utils/requests'
+import { signUp } from '../../utils/requests'
 import { useHistory } from 'react-router';
+import Loading from '../../components/loading/loading'
+import UserContext from '../../context/userContext'
 
 const SignUp = (props: any) => {
 
     const history = useHistory()
+    const context = useContext(UserContext)
     const [type, setType] = useState('Individual')
     const [fullName, setFullName] = useState('')
     const [userName, setUserName] = useState('')
@@ -21,6 +24,7 @@ const SignUp = (props: any) => {
 
     return (
         <div className='sign-up'>
+            {loading && <Loading></Loading>}
             <div className='sign-up-headline'>
                 Sign up
             </div>
@@ -84,6 +88,8 @@ const SignUp = (props: any) => {
                         setLoading(false)
 
                         if (response === 200) {
+                            context.userName = userName
+                            context.password = password
                             history.push('/confirm')
                         }
                         else {

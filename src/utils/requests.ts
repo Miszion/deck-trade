@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const signUp = async (user: any) => {
+export const signUp = async (user: any) => {
 
     try {
         const response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/signup`, {
@@ -19,4 +19,29 @@ const signUp = async (user: any) => {
     }
 }
 
-export default signUp
+export const confirm = async (userName: string, code: string) => {
+
+    try {
+        const response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/confirm`, {
+            userName: userName,
+            code: code
+        })
+        return response.status
+    }
+    catch(err) {
+        return 500
+    }
+}
+
+export const login = async (userName: string, password: string) => {
+    try {
+        const response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth`, {
+            userName: userName,
+            password: password
+        })
+        return response.data
+    }
+    catch(err) {
+        return 500
+    }
+}

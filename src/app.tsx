@@ -5,43 +5,49 @@ import Header from './components/header/header'
 import Footer from './components/footer/footer'
 import LandingPage from './screens/landing/landing'
 import SignUp from './screens/sign-up/sign-up'
+import Confirm from './screens/confirm/confirm'
+import UserContext from './context/userContext'
 
 const App = (props: any) => {
     return (
-        <div className='app'>
-            <Router>
-                <Header></Header>
-                <Switch>
-                    <Route exact path='/'>
-                        <LandingPage/>
-                    </Route>
-                    <Route exact path='/signup'>
-                        <SignUp/>
-                    </Route>
-                    <Route exact path='/signin'>
-                        <div className='home'>
-                            This is sign in!
-                        </div>
-                    </Route>
-                    <Route exact path='/dashboard'>
-                        <div className='home'>
-                            This is the dashboard!
-                        </div>
-                    </Route>
-                    <Route exact path='/profile/:user_id'>
-                        <div className='home'>
-                            This is the user's profile
-                        </div>
-                    </Route>
-                    <Route exact path='/verify'>
-                        <div className='home'>
-                            This is the verification page!
-                        </div>
-                    </Route>
-                </Switch>
-                <Footer></Footer>
-            </Router>
-        </div>
+        <UserContext.Provider value={{
+            userName: '',
+            token: '',
+            password: ''
+        }}>
+            <div className='app'>
+                <Router>
+                    <Header></Header>
+                    <Switch>
+                        <Route exact path='/'>
+                            <LandingPage/>
+                        </Route>
+                        <Route exact path='/signup'>
+                            <SignUp/>
+                        </Route>
+                        <Route exact path='/signin'>
+                            <div className='home'>
+                                This is sign in!
+                            </div>
+                        </Route>
+                        <Route exact path='/dashboard'>
+                            <div className='home'>
+                                This is the dashboard!
+                            </div>
+                        </Route>
+                        <Route exact path='/profile/:user_id'>
+                            <div className='home'>
+                                This is the user's profile
+                            </div>
+                        </Route>
+                        <Route exact path='/confirm'>
+                            <Confirm></Confirm>
+                        </Route>
+                    </Switch>
+                    <Footer></Footer>
+                </Router>
+            </div>
+        </UserContext.Provider>
     )
 }
 

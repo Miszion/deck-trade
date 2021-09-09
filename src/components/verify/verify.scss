@@ -1,0 +1,29 @@
+.verify {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 75px;
+}
+
+.verify-error {
+    color: #E41818;
+    margin-bottom: 25px;
+    font-weight: 600;
+    margin-left: 25px;
+    margin-right: 25px;
+    text-align: center;
+}
+
+.verify-panel {
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    .digit-input {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+}
