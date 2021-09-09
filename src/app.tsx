@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './components/header/header'
 import Footer from './components/footer/footer'
 import LandingPage from './screens/landing/landing'
-import SignUp from './screens/sign-up/sign-up'
+import SignUp from './screens/signUp/signUp'
 import Confirm from './screens/confirm/confirm'
 import UserContext from './context/userContext'
 
