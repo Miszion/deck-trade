@@ -7,6 +7,7 @@ import LandingPage from './screens/landing/landing'
 import SignUp from './screens/signUp/signUp'
 import Confirm from './screens/confirm/confirm'
 import UserContext from './context/userContext'
+import SignIn from './screens/signIn/signIn'
 
 const App = (props: any) => {
     return (
@@ -26,9 +27,7 @@ const App = (props: any) => {
                             <SignUp/>
                         </Route>
                         <Route exact path='/signin'>
-                            <div className='home'>
-                                This is sign in!
-                            </div>
+                            <SignIn/>
                         </Route>
                         <Route exact path='/dashboard'>
                             <div className='home'>
