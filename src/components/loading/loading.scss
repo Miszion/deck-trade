@@ -8,6 +8,7 @@
     width: 100vw;
     background: rgba(0, 0, 0, 0.3);
     outline: 9999px;
+    z-index: 9999;
     top: 0px;
     opacity: 0;
     animation: fadeIn .2s ease-in-out forwards;

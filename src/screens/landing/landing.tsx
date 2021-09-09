@@ -48,7 +48,7 @@ const Landing = (props: any) => {
                     </Info>
                 </div>
                 <div className='landing-info-button'>
-                    <Button text="LEARN MORE" color='#8B16D3' textColor='white'></Button>
+                    <Button text="Learn More" color='#8B16D3' textColor='white'></Button>
                 </div>
             </div>
             <div className='landing-info-panel'>
