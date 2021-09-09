@@ -2,12 +2,14 @@ import './input.scss'
 
 const Input = (props: any) => {
 
-    const { label, type } = props
+    const { label, type, onChange, fontSize } = props
 
     return (
         <div className='input'>
-            <label>{label}</label>
-            <input type={type}></input>
+            <label style={{fontSize: fontSize}}>{label}</label>
+            <input type={type} style={{fontSize: fontSize}} onChange={(e) => {
+                onChange(e.target.value)
+            }}></input>
         </div>
     )
 

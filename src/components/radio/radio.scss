@@ -1,0 +1,44 @@
+.radio-group {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    label {
+        font-weight: 600;
+    }
+}
+
+.radio {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+    justify-content: flex-start;
+
+    &-circle {
+        height: 25px;
+        width: 25px;
+        border: 1px solid #eeeeee;
+        border-radius: 300px;
+        display: flex;
+        cursor: pointer;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+        margin-right: 10px;
+        --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+
+        .selected-circle {
+            height: 15px;
+            width: 15px;
+            background-color: #8B16D3;
+            border-radius: 300px;
+        }
+
+    }
+}
