@@ -60,7 +60,7 @@ const Landing = (props: any) => {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
                     </div>
                 </div>
-                <Business></Business>
+                {/* <Business></Business> */}
             </div>
             <div className='landing-submission'>
                 <div className='landing-submission-text'>
