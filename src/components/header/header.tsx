@@ -28,9 +28,9 @@ const Header = (props: any) => {
                     <div className='menu-items'>
                         <Link to='/' className='header-item'>Trade</Link>
                         <Link to='/' className='header-item'>Company</Link>
-                        <Link to={cookie.token ? '/profile' : '/signin'} className='header-item'>Profile</Link>
+                        <Link to={cookie.token ? `/profile/${cookie.token.userName}` : '/signin'} className='header-item'>Profile</Link>
                     </div>
-                    <Button color="#ffffff" textColor="#20232a" text={cookie.token ? 'Sign Out' : 'Sign In'} onClick={() => {cookie.token && removeCookie('token')}}link={cookie.token ? '/' : '/signin'}></Button>
+                    <Button color="#ffffff" textColor="#20232a" text={cookie.token ? 'Sign Out' : 'Sign In'} onClick={() => {cookie.token && removeCookie('token')}} link={cookie.token ? '/' : '/signin'}></Button>
                 </div>
             </div>
             <div className='header-container-mobile'>
@@ -51,7 +51,7 @@ const Header = (props: any) => {
                 <div className='menu-items-mobile'>
                     <Link to='/' className='header-item'>Trade</Link>
                     <Link to='/' className='header-item'>Company</Link>
-                    <Link to={cookie.token ? '/profile' : '/signin'} className='header-item'>Profile</Link>
+                    <Link to={cookie.token ? `/profile/${cookie.token.userName}` : '/signin'} className='header-item'>Profile</Link>
                 </div>
                 <div className='side-menu-button'>
                     <Button text={cookie.token ? 'Sign Out' : 'Sign In'} color="#8B16D3" textColor='#ffffff' onClick={() => {

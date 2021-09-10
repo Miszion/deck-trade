@@ -49,18 +49,17 @@ const SignIn = (props: any) => {
                     <Button text='Sign In' color="#8B16D3" textColor="white" onClick={ async () => {
                         setLoading(true)
                         const response = await login(userName, password)
-
                         if (response.message) {
                             setError('')
                             setLoading(false)
 
                             context.userName = userName
 
-                            setCookie('token', response.message.AccessToken, {
+                            setCookie('token', { token: response.message.AccessToken, userName: userName }, {
                                 maxAge: response.message.ExpiresIn
                             })
 
-                            history.push('/profile')
+                            history.push(`/profile/${context.userName}`)
                         }
                         else {
                             setLoading(false)

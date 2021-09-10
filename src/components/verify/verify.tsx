@@ -81,10 +81,10 @@ const Verify = (props: any) => {
                     if (response.message) {
                         context.password = ''
 
-                        setCookie('token', response.message.AccessToken, {
+                        setCookie('token', { token: response.message.AccessToken, userName: userName }, {
                             maxAge: response.message.ExpiresIn
                         })
-                        history.push('/profile')
+                        history.push(`/profile/${userName}`)
                     }
                 }
             }}></Button>

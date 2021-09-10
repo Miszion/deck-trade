@@ -45,3 +45,13 @@ export const login = async (userName: string, password: string) => {
         return 500
     }
 }
+
+export const getUser = async (userName: string) => {
+    try {
+        const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/user/${userName}`)
+        return response.data
+    }
+    catch(err) {
+        return 500
+    }
+}

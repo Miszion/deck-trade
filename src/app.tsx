@@ -8,6 +8,8 @@ import SignUp from './screens/signUp/signUp'
 import Confirm from './screens/confirm/confirm'
 import UserContext from './context/userContext'
 import SignIn from './screens/signIn/signIn'
+import Profile from './screens/profile/profile'
+
 import { withCookies, useCookies } from 'react-cookie'
 
 const App = (props: any) => {
@@ -39,10 +41,8 @@ const App = (props: any) => {
                                     This is the dashboard!
                                 </div>
                             </Route>
-                            <Route exact path='/profile/:user_id'>
-                                <div className='home'>
-                                    This is the user's profile
-                                </div>
+                            <Route exact path='/profile/:userName'>
+                                <Profile></Profile>
                             </Route>
                             <Route exact path='/confirm'>
                                 <Confirm></Confirm>
