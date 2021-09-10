@@ -22,7 +22,7 @@ const Verify = (props: any) => {
     const { setStatus } = props
     const history = useHistory()
     const context = useContext(UserContext)
-    const [cookies, setCookie] = useCookies(['token'])
+    const [cookie, setCookie] = useCookies(['token'])
     const [firstDigit, setFirstDigit] = useState('')
     const [secondDigit, setSecondDigit] = useState('')
     const [thirdDigit, setThirdDigit] = useState('')
@@ -65,10 +65,8 @@ const Verify = (props: any) => {
                         setLoaded('failed')
                         setStatus('failed')
                     }
-
                 }
                 else {
-
                     const userName = context.userName
                     const password = context.password
 

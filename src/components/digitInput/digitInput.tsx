@@ -14,7 +14,7 @@ const DigitInput = (props: any) => {
 
     return (
         <div className='digit-input'>
-            <input autoFocus={autoFocus} ref={ref} type="text" maxLength={1} onChange={(e) => {onChange(e.target.value)}}></input>
+            <input spellCheck="false" autoComplete='off' autoFocus={autoFocus} ref={ref} type="text" maxLength={1} onChange={(e) => {onChange(e.target.value)}}></input>
         </div>
     )
 
