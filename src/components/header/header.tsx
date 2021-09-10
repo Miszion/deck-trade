@@ -5,12 +5,16 @@ import Button from '../button/button'
 import { useContext, useState } from 'react'
 import { useHistory } from 'react-router'
 import UserContext from '../../context/userContext'
+import { useCookies, withCookies } from 'react-cookie'
 
 const Header = (props: any) => {
 
     const history = useHistory()
     const context = useContext(UserContext)
     const [menu, toggleMenu] = useState(false)
+
+    const [cookie, setCookie, removeCookie] = useCookies(['token'])
+
 
     return (
         <div className='header'>
@@ -24,9 +28,9 @@ const Header = (props: any) => {
                     <div className='menu-items'>
                         <Link to='/' className='header-item'>Trade</Link>
                         <Link to='/' className='header-item'>Company</Link>
-                        <Link to='/' className='header-item'>Account</Link>
+                        <Link to={cookie.token ? '/profile' : '/signin'} className='header-item'>Profile</Link>
                     </div>
-                    <Button color="#ffffff" textColor="#20232a" text="Sign In" link='/signin'></Button>
+                    <Button color="#ffffff" textColor="#20232a" text={cookie.token ? 'Sign Out' : 'Sign In'} onClick={() => {cookie.token && removeCookie('token')}}link={cookie.token ? '/' : '/signin'}></Button>
                 </div>
             </div>
             <div className='header-container-mobile'>
@@ -47,13 +51,14 @@ const Header = (props: any) => {
                 <div className='menu-items-mobile'>
                     <Link to='/' className='header-item'>Trade</Link>
                     <Link to='/' className='header-item'>Company</Link>
-                    <Link to='/' className='header-item'>Account</Link>
+                    <Link to={cookie.token ? '/profile' : '/signin'} className='header-item'>Profile</Link>
                 </div>
                 <div className='side-menu-button'>
-                    <Button text={context.token ? 'Profile' : 'Sign In'} color="#8B16D3" textColor='#ffffff' onClick={() => {
-                        if (context.token) {
+                    <Button text={cookie.token ? 'Sign Out' : 'Sign In'} color="#8B16D3" textColor='#ffffff' onClick={() => {
+                        if (cookie.token) {
                             toggleMenu(!menu)
-                            history.push('/profile')
+                            removeCookie('token')
+                            history.push('/')
                         }
                         else {
                             toggleMenu(!menu)
@@ -66,4 +71,4 @@ const Header = (props: any) => {
     )
 }
 
-export default Header
+export default withCookies(Header)

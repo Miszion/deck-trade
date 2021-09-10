@@ -8,6 +8,7 @@ import Button from '../../components/button/button';
 import { login } from '../../utils/requests';
 import UserContext from '../../context/userContext';
 import Loading from '../../components/loading/loading';
+import { useCookies, withCookies } from 'react-cookie';
 
 const SignIn = (props: any) => {
 
@@ -17,6 +18,8 @@ const SignIn = (props: any) => {
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
+
+    const [cookies, setCookie] = useCookies(['token'])
 
     return (
         <div className='sign-in'>
@@ -50,8 +53,13 @@ const SignIn = (props: any) => {
                         if (response.message) {
                             setError('')
                             setLoading(false)
+
                             context.userName = userName
-                            context.token = response.message.AccessToken
+
+                            setCookie('token', response.message.AccessToken, {
+                                maxAge: response.message.ExpiresIn
+                            })
+
                             history.push('/profile')
                         }
                         else {
@@ -69,4 +77,4 @@ const SignIn = (props: any) => {
     )
 }
 
-export default SignIn;
+export default withCookies(SignIn);

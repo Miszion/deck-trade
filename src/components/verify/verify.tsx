@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from 'react'
 import { confirm, login } from '../../utils/requests'
 import { useHistory } from 'react-router'
 import UserContext from '../../context/userContext'
+import { useCookies, withCookies } from 'react-cookie'
 
 const isFilled = (digitArray: Array<string>) => {
 
@@ -19,9 +20,9 @@ const isFilled = (digitArray: Array<string>) => {
 const Verify = (props: any) => {
 
     const { setStatus } = props
-
     const history = useHistory()
     const context = useContext(UserContext)
+    const [cookies, setCookie] = useCookies(['token'])
     const [firstDigit, setFirstDigit] = useState('')
     const [secondDigit, setSecondDigit] = useState('')
     const [thirdDigit, setThirdDigit] = useState('')
@@ -32,7 +33,6 @@ const Verify = (props: any) => {
     const [loaded, setLoaded] = useState('')
 
     useEffect(() => {
-        console.log('setting filled')
         setFilled(isFilled([firstDigit, secondDigit, thirdDigit, fourthDigit, fifthDigit, sixthDigit]))
     }, [firstDigit, secondDigit, thirdDigit, fourthDigit, fifthDigit, sixthDigit])
 
@@ -82,7 +82,10 @@ const Verify = (props: any) => {
 
                     if (response.message) {
                         context.password = ''
-                        context.token = response.message.AccessToken
+
+                        setCookie('token', response.message.AccessToken, {
+                            maxAge: response.message.ExpiresIn
+                        })
                         history.push('/profile')
                     }
                 }
@@ -92,4 +95,4 @@ const Verify = (props: any) => {
 
 }
 
-export default Verify
+export default withCookies(Verify)

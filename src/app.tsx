@@ -8,8 +8,12 @@ import SignUp from './screens/signUp/signUp'
 import Confirm from './screens/confirm/confirm'
 import UserContext from './context/userContext'
 import SignIn from './screens/signIn/signIn'
+import { withCookies, useCookies } from 'react-cookie'
 
 const App = (props: any) => {
+
+    const [cookies, setCookie] = useCookies(['token'])
+
     return (
         <UserContext.Provider value={{
             userName: '',
@@ -52,4 +56,4 @@ const App = (props: any) => {
     )
 }
 
-export default App
+export default withCookies(App)
