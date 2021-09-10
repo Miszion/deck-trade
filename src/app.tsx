@@ -9,7 +9,7 @@ import Confirm from './screens/confirm/confirm'
 import UserContext from './context/userContext'
 import SignIn from './screens/signIn/signIn'
 import Profile from './screens/profile/profile'
-
+import TopScroll from './components/topScroll/topScroll'
 import { withCookies, useCookies } from 'react-cookie'
 
 const App = (props: any) => {
@@ -26,6 +26,7 @@ const App = (props: any) => {
                 <Router>
                     <Header></Header>
                     <div className='app-body'>
+                        <TopScroll/>
                         <Switch>
                             <Route exact path='/'>
                                 <LandingPage/>

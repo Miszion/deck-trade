@@ -4,6 +4,15 @@
     height: 250px;
 }
 
+.profile {
+    min-height: 100vh;
+}
+
+.profile-loaded {
+    opacity: 0;
+    animation: fadeIn .3s ease-in-out forwards;
+}
+
 .profile-content {
     height: 75vh;
     display: flex;
@@ -70,4 +79,14 @@
         margin-bottom: 35px;
     }
 
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

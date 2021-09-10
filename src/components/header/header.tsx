@@ -10,7 +10,6 @@ import { useCookies, withCookies } from 'react-cookie'
 const Header = (props: any) => {
 
     const history = useHistory()
-    const context = useContext(UserContext)
     const [menu, toggleMenu] = useState(false)
 
     const [cookie, setCookie, removeCookie] = useCookies(['token'])
@@ -30,7 +29,7 @@ const Header = (props: any) => {
                         <Link to='/' className='header-item'>Company</Link>
                         <Link to={cookie.token ? `/profile/${cookie.token.userName}` : '/signin'} className='header-item'>Profile</Link>
                     </div>
-                    <Button color="#ffffff" textColor="#20232a" text={cookie.token ? 'Sign Out' : 'Sign In'} onClick={() => {cookie.token && removeCookie('token')}} link={cookie.token ? '/' : '/signin'}></Button>
+                    <Button color="#ffffff" textColor="#20232a" text={cookie.token ? 'Sign Out' : 'Sign In'} onClick={() => {removeCookie('token')}} link={cookie.token ? '/' : '/signin'}></Button>
                 </div>
             </div>
             <div className='header-container-mobile'>
