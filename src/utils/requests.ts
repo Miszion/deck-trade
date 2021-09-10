@@ -46,9 +46,13 @@ export const login = async (userName: string, password: string) => {
     }
 }
 
-export const getUser = async (userName: string) => {
+export const getUser = async (userName: string, token: string) => {
     try {
-        const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/user/${userName}`)
+        const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/user/${userName}`, {
+            headers: {
+                "Authorization": token
+            }
+        })
         return response.data
     }
     catch(err) {

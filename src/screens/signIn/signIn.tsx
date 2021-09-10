@@ -55,7 +55,7 @@ const SignIn = (props: any) => {
 
                             context.userName = userName
 
-                            setCookie('token', { token: response.message.AccessToken, userName: userName }, {
+                            setCookie('token', { token: response.message.IdToken, userName: userName }, {
                                 maxAge: response.message.ExpiresIn
                             })
 
