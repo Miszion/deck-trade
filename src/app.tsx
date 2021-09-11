@@ -14,8 +14,6 @@ import { withCookies, useCookies } from 'react-cookie'
 
 const App = (props: any) => {
 
-    const [cookies, setCookie] = useCookies(['token'])
-
     return (
         <UserContext.Provider value={{
             userName: '',

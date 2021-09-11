@@ -59,3 +59,37 @@ export const getUser = async (userName: string, token: string) => {
         return 500
     }
 }
+
+export const uploadProfilePicture = async (userName: string, file: File, token: string) => {
+    try {
+        const data = new FormData()
+        data.append('file', file)
+        const response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/uploadProfilePicture/${userName}`, data, 
+        { 
+            headers: {
+                "Authorization": token
+            }
+        })
+        return response.data
+    }
+    catch(err) {
+        return 500
+    }
+}
+
+export const uploadBannerPicture = async (userName: string, file: File, token: string) => {
+    try {
+        const data = new FormData()
+        data.append('file', file)
+        const response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/uploadBannerPicture/${userName}`, data, 
+        { 
+            headers: {
+                "Authorization": token
+            }
+        })
+        return response.data
+    }
+    catch(err) {
+        return 500
+    }
+}

@@ -2,6 +2,30 @@
     background-image: linear-gradient(to right, #8B16D3, #1679D3);
     width: 100%;
     height: 250px;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn .5s 1.3s ease-in-out forwards;
+
+    img {
+        width: 100%;
+    }
+
+    input {
+        position: absolute;
+        opacity: 0;
+        height: 250px;
+        width: calc(100% + 300px);
+        cursor: pointer;
+        left: -300px;
+    }
+
+    input:hover {
+        opacity: .5;
+
+        transition: opacity .2s ease-out;
+        background-color: #111111;
+    }
+
 }
 
 .profile {
@@ -24,7 +48,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-right: 2px solid #eeeeee;
 }
 
 .profile-image {
@@ -39,6 +62,31 @@
     top: 150px;
     opacity: 0;
     animation: fadeUp .5s .2s ease-in-out forwards;
+    overflow: hidden;
+
+    img {
+        width: 250px;
+        border-radius: 300px;
+        height: 250px
+    }
+
+    input {
+        position: absolute;
+        opacity: 0;
+        height: 250px;
+        width: 500px;
+        cursor: pointer;
+        border-radius: 300px;
+        left: -50px;
+    }
+
+    input:hover {
+        opacity: .3;
+        transition: opacity .2s ease-out;
+        background-color: #111111;
+    }
+
+
 }
 
 .profile-text {
@@ -74,7 +122,8 @@
     flex-direction: column;
     align-items: center;
     opacity: 0;
-    animation: fadeUp .5s .4s ease-in-out forwards;
+    animation: fadeUp .5s 1.5s ease-in-out forwards;
+    border-left: 2px solid #eeeeee;
 
     &-header {
         margin-top: 35px;
