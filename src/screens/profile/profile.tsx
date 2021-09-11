@@ -33,7 +33,7 @@ const Profile = (props: any) => {
             setLoading(false)
         }
         fetchUser()
-    }, [])
+    }, [userName])
 
     useEffect(() => {
         async function uploadProfilePic() {
