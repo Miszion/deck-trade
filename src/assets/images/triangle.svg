@@ -1,0 +1,5 @@
+<svg height='15px' width='15px'  fill="#000000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" version="1.1" style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;" viewBox="0 0 1000 1000" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd"><defs><style type="text/css">
+   
+    .triangle {fill:#c4c4c4;fill-rule:nonzero}
+   
+  </style></defs><g><path class="triangle" d="M486 761l-400 -501c-6,-8 -5,-18 3,-24 3,-3 7,-4 10,-4l802 0c9,0 17,8 17,17 0,5 -2,9 -5,12l-400 501c-6,7 -16,8 -24,2 -1,-1 -2,-2 -3,-3z"></path></g></svg>

@@ -24,6 +24,7 @@
 
         transition: opacity .2s ease-out;
         background-color: #111111;
+        border-radius: 1px solid #111111;
     }
 
 }
@@ -84,6 +85,7 @@
         opacity: .3;
         transition: opacity .2s ease-out;
         background-color: #111111;
+        border-radius: 1px solid #111111;
     }
 
 
@@ -114,6 +116,10 @@
         margin-bottom: 10px;
         text-align: center;
     }
+}
+
+.add-card {
+    cursor: pointer;
 }
 
 .profile-collection {

@@ -93,3 +93,24 @@ export const uploadBannerPicture = async (userName: string, file: File, token: s
         return 500
     }
 }
+
+export const fetchCards = async (fname: string, monsterType: string, race: string, cardType: string, level: string, attribute: string) => {
+
+    const queryURL = `/?`
+
+    const fNameURL = `${fname !== '' ? `fname=${fname}&` : ''}`
+    const cardTypeURL = `${cardType !== '' ? (cardType === 'monster' ? (monsterType !== '' ? `type=${monsterType} monster&` : '') : `type=${cardType} card&`) : ''}`
+    const raceURL = `${race !== '' ? (cardType === 'monster' ? `race=${race}&` : '') : ''}`
+    const levelURL = `${level !== '' ? `level=${level}&` : ''}`
+    const attributeURL = `${attribute !== '' ? `attribute=${attribute}&` : ''}`
+
+    const fullURL = queryURL + fNameURL + raceURL + cardTypeURL + levelURL + attributeURL + 'num=20&offset=1'
+
+    try {
+        const response = await axios.get(`${process.env.REACT_APP_YGO_API_URL}${fullURL}`)
+        return response.data
+    }
+    catch(err) {
+        console.log(err)
+    }
+}

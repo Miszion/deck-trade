@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useCookies, withCookies } from 'react-cookie'
-import { useParams } from 'react-router'
+import { useHistory, useParams } from 'react-router'
 import Loading from '../../components/loading/loading'
 import { getUser, uploadProfilePicture, uploadBannerPicture } from '../../utils/requests'
+import { ReactComponent as Plus } from '../../assets/images/plus.svg'
 import './profile.scss'
 
 const Profile = (props: any) => {
 
     const { userName } = useParams<{ userName: string }>();
-    
     const [cookies, setCookie] = useCookies(['token'])
 
     const [profilePic, setProfilePic] = useState<File>();
@@ -21,23 +21,31 @@ const Profile = (props: any) => {
         description: undefined
     })
 
-
+    const history = useHistory()
     const [loading, setLoading] = useState(false);
     const [pictureLoading, setPictureLoading] = useState(false)
 
     useEffect(() => {
+        
         async function fetchUser() {
             setLoading(true)
             const response = await getUser(userName, cookies.token.token)
             setUserData(response.message)
             setLoading(false)
         }
-        fetchUser()
+
+        if (!cookies.token) {
+            history.push('/')
+        }
+        else {
+            fetchUser()
+        }
+        
     }, [userName])
 
     useEffect(() => {
         async function uploadProfilePic() {
-            if (profilePic) {
+            if (profilePic && cookies.token) {
                 setPictureLoading(true)
                 await uploadProfilePicture(userName, profilePic, cookies.token.token)
                 const userData = await getUser(userName, cookies.token.token)
@@ -45,12 +53,17 @@ const Profile = (props: any) => {
                 setPictureLoading(false)
             }
         }
+
+        if  (!cookies.token) {
+            history.push('/')
+        }
+
         uploadProfilePic()
     }, [profilePic])
 
     useEffect(() => {
         async function uploadBannerPic() {
-            if (bannerPic) {
+            if (bannerPic && cookies.token) {
                 setPictureLoading(true)
                 await uploadBannerPicture(userName, bannerPic, cookies.token.token)
                 const userData = await getUser(userName, cookies.token.token)
@@ -58,8 +71,19 @@ const Profile = (props: any) => {
                 setPictureLoading(false)
             }
         }
+
+        if (!cookies.token) {
+            history.push('/')
+        }
+
         uploadBannerPic()
     }, [bannerPic])
+
+    useEffect(() => {
+        if (!cookies.token) {
+            history.push('/')
+        }
+    }, [])
 
     return (
         <div className='profile'>
@@ -67,13 +91,13 @@ const Profile = (props: any) => {
             <div className='profile-loaded'>
                 {pictureLoading && <Loading transparent/>}
                 <div className='profile-banner'>
-                {userData && cookies.token.userName === userData.user_name && <input type='file' accept="image/*" onChange={async (e) => { e.target.files && setBannerPic(e.target.files[0]) }}></input>}
+                {userData && cookies.token && cookies.token.userName === userData.user_name && <input type='file' accept="image/*" onChange={async (e) => { e.target.files && setBannerPic(e.target.files[0]) }}></input>}
                 {userData.banner_picture && <img src={`${process.env.REACT_APP_S3_USERS_URL}/${userData.banner_picture}?t=${new Date().getTime()}`} alt='Banner Picture'></img>}
                 </div>
                 <div className='profile-content'>
                     <div className='profile-info'>
                         <div className='profile-image'>
-                            {userData && cookies.token.userName === userData.user_name && <input type='file' accept="image/*" onChange={async (e) => { e.target.files && setProfilePic(e.target.files[0]) }}></input>}
+                            {userData && cookies.token && cookies.token.userName === userData.user_name && <input type='file' accept="image/*" onChange={async (e) => { e.target.files && setProfilePic(e.target.files[0]) }}></input>}
                             {userData.profile_picture && <img src={`${process.env.REACT_APP_S3_USERS_URL}/${userData.profile_picture}?t=${new Date().getTime()}`} alt='Profile Picture'></img>}
                         </div>
                         <div className='profile-text'>
@@ -96,9 +120,12 @@ const Profile = (props: any) => {
                             Collections
                         </div>
                         <div className='profile-search'>
-
                         </div>
-                        <div className='profile-collection'></div>
+                        <div className='profile-collection'>
+                            <div className='add-card' onClick={() => history.push('/search')}>
+                                <Plus></Plus>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>)}

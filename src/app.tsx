@@ -11,6 +11,7 @@ import SignIn from './screens/signIn/signIn'
 import Profile from './screens/profile/profile'
 import TopScroll from './components/topScroll/topScroll'
 import { withCookies, useCookies } from 'react-cookie'
+import Search from './components/search/search'
 
 const App = (props: any) => {
 
@@ -45,6 +46,9 @@ const App = (props: any) => {
                             </Route>
                             <Route exact path='/confirm'>
                                 <Confirm></Confirm>
+                            </Route>
+                            <Route exact path='/search'>
+                                <Search/>
                             </Route>
                         </Switch>
                     </div>
