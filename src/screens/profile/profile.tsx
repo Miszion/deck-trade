@@ -4,6 +4,7 @@ import { useHistory, useParams } from 'react-router'
 import Loading from '../../components/loading/loading'
 import { getUser, uploadProfilePicture, uploadBannerPicture } from '../../utils/requests'
 import { ReactComponent as Plus } from '../../assets/images/plus.svg'
+import { ReactComponent as Pencil } from '../../assets/images/pencil.svg'
 import './profile.scss'
 
 const Profile = (props: any) => {
@@ -24,6 +25,7 @@ const Profile = (props: any) => {
     const history = useHistory()
     const [loading, setLoading] = useState(false);
     const [pictureLoading, setPictureLoading] = useState(false)
+    const [editDescription, setDescription] = useState(false)
 
     useEffect(() => {
         
@@ -110,7 +112,13 @@ const Profile = (props: any) => {
                                     About
                                 </div>
                                 <div className='profile-about-description'>
-                                    {userData.description}       
+                                    <div className='input-description'>
+                                        {(cookies.token.userName === userData.user_name && editDescription) ? <textarea value={userData.description}></textarea> 
+                                        : userData.description}
+                                    </div>
+                                    {cookies.token.userName === userData.user_name && <div className='input-pencil' onClick={() => {setDescription(!editDescription)}}>
+                                        <Pencil/>
+                                    </div>}
                                 </div>
                             </div>
                         </div>

@@ -104,6 +104,16 @@
     }
 }
 
+.input-pencil {
+    margin-left: 10px;
+    cursor: pointer;
+    transition: transform .2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.30)
+    }
+}
+
 .profile-about {
     text-align: center;
 
@@ -115,6 +125,24 @@
     &-description {
         margin-bottom: 10px;
         text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 250px;
+        text-align: center;
+
+        textarea {
+            font-family: 'Quicksand', sans-serif;
+            border: none;
+            font-size: 16px;
+            padding: 0;
+            outline: none;
+            text-align: center;
+            resize: none;
+            width: 210px;
+        }
+
     }
 }
 

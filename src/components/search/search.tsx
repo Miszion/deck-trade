@@ -8,6 +8,7 @@ import { fetchCards } from '../../utils/requests'
 import { useHistory } from 'react-router'
 import { useCookies } from 'react-cookie'
 import { filterData } from '../../utils/filter'
+import AddCard from '../addCard/addCard'
 
 const Search = (props: any) => {
 
@@ -22,7 +23,8 @@ const Search = (props: any) => {
     const [cardList, setCardList] = useState<[]>([])
     const [cookies, setCookies] = useCookies(['token'])
     const [ogCardList, setOGCardList] = useState<[]>([])
-
+    const [modal, toggleModal] = useState(false)
+    
     const history = useHistory()
     useEffect(() => {
 
@@ -52,6 +54,7 @@ const Search = (props: any) => {
 
     return (
         <div className='search'>
+            {modal && <AddCard/>}
             <div className='search-box'>
                 <div className='search-content'>
                     <Dropdown options={[
@@ -81,8 +84,8 @@ const Search = (props: any) => {
                     </div>
                 </div>
                 <div className='card-grid'>
-                    {cardList && cardList.length !== 0 && cardList.slice(0,14).map((element: any, i: number) => 
-                        <div className='card'>
+                    {cardList && cardList.length !== 0 && cardList.slice(0,20).map((element: any, i: number) => 
+                        <div className='card' onClick={() => {toggleModal(true)}}>
                             <img src={element.card_images[0].image_url_small}></img>
                         </div>
                     )}
