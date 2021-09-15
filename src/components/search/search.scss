@@ -7,7 +7,7 @@
     align-items: center;
     width: 100vw;
     z-index: 9999;
-    top: 0px;
+    top: 75px;
     opacity: 1;
 }
 
@@ -40,8 +40,14 @@
         max-height: 200px;
         cursor: pointer;
     }
+
+    &:hover {
+        transform: scale(1.05);
+    }
     margin-left: 10px;
     margin-right: 10px;
+    transition: transform .3s ease-in-out;
+    animation: fadeIn .2s alternate;
 }
 
 .card-grid {
@@ -52,7 +58,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     overflow-y: scroll;
-    padding-top: 35px;
+    padding-top: 10px;
     padding-left: 35px;
     padding-right: 35px;
     justify-content: center;
@@ -82,12 +88,12 @@
 }
 
 .search-content {
-    margin-top: 100px;
+    margin-top: 15px;
 }
 
 .type-section {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     
     @media screen and (max-width: 700px) {
         flex-direction: row;

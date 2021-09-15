@@ -7,6 +7,7 @@ import {ReactComponent as Close} from '../../assets/images/close.svg'
 import { fetchCards } from '../../utils/requests'
 import { useHistory } from 'react-router'
 import { useCookies } from 'react-cookie'
+import { filterData } from '../../utils/filter'
 
 const Search = (props: any) => {
 
@@ -20,6 +21,8 @@ const Search = (props: any) => {
     const [cardName, setCardName] = useState('')
     const [cardList, setCardList] = useState<[]>([])
     const [cookies, setCookies] = useCookies(['token'])
+    const [ogCardList, setOGCardList] = useState<[]>([])
+
     const history = useHistory()
     useEffect(() => {
 
@@ -27,17 +30,22 @@ const Search = (props: any) => {
             const response = await fetchCards(cardName, monsterType, type, cardType, level, attribute)
 
             if (response && response.data) {
-                setCardList(response.data)
-            }
-            else {
-                setCardList([])
+                setCardList(filterData(response.data, cardName, type, level, monsterType, attribute, cardType))
+                setOGCardList(response.data)
             }
         }
 
         getCards()
 
+    }, [])
+
+
+    useEffect(() => {
+
+        setCardList(filterData(ogCardList, cardName, type, level, monsterType, attribute, cardType))
 
     }, [level, type, monsterType, attribute, cardType, cardName])
+
 
 
     const { toggleMenu } = props
@@ -46,9 +54,6 @@ const Search = (props: any) => {
         <div className='search'>
             <div className='search-box'>
                 <div className='search-content'>
-                    <div className='close-menu' onClick={() => {cookies.token.token ? history.push(`/profile/${cookies.token.userName}`) : '/'}}>
-                        <Close/>
-                    </div>
                     <Dropdown options={[
                         {
                             name: "Yu-Gi-Oh",
@@ -76,9 +81,9 @@ const Search = (props: any) => {
                     </div>
                 </div>
                 <div className='card-grid'>
-                    {cardList && cardList.length !== 0 && cardList.map((i: any) => 
+                    {cardList && cardList.length !== 0 && cardList.slice(0,14).map((element: any, i: number) => 
                         <div className='card'>
-                            <img src={i.card_images[0].image_url_small}></img>
+                            <img src={element.card_images[0].image_url_small}></img>
                         </div>
                     )}
                 </div>
