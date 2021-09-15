@@ -34,7 +34,7 @@ export const constructTypeList = () => {
 
 export const constructCardTypeList = () => {
 
-    const cardArray = ["", "Monster", "Spell", "Trap"]
+    const cardArray = ["", "Monster", "Spell Card", "Trap Card"]
 
     const cardList = []
 

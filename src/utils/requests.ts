@@ -107,7 +107,7 @@ export const fetchCards = async (fname: string, monsterType: string, race: strin
     // const fullURL = queryURL + fNameURL + raceURL + cardTypeURL + levelURL + attributeURL + 'num=20&offset=1'
 
     try {
-        const fullSearch = await axios.get(`${process.env.REACT_APP_YGO_API_URL}/`)
+        const fullSearch = await axios.get(`${process.env.REACT_APP_YGO_API_URL}`)
         return fullSearch.data
     }
     catch(err) {
