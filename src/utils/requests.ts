@@ -94,17 +94,25 @@ export const uploadBannerPicture = async (userName: string, file: File, token: s
     }
 }
 
+export const updateUserDescription = async (userName: string, description: string, token: string) => {
+    try {
+        const response = await axios.patch(`${process.env.REACT_APP_API_ENDPOINT}/updateUserDesc/`, {
+            userName: userName,
+            description: description
+        },
+        { 
+            headers: {
+                "Authorization": token
+            }
+        })
+        return response.data
+    }
+    catch(err) {
+        return 500
+    }
+}
+
 export const fetchCards = async (fname: string, monsterType: string, race: string, cardType: string, level: string, attribute: string) => {
-
-    // const queryURL = `/?`
-
-    // const fNameURL = `${fname !== '' ? `fname=${fname}&` : ''}`
-    // const cardTypeURL = `${cardType !== '' ? (cardType === 'monster' ? (monsterType !== '' ? `type=${monsterType} monster&` : '') : `type=${cardType} card&`) : ''}`
-    // const raceURL = `${race !== '' ? (cardType === 'monster' ? `race=${race}&` : '') : ''}`
-    // const levelURL = `${level !== '' ? `level=${level}&` : ''}`
-    // const attributeURL = `${attribute !== '' ? `attribute=${attribute}&` : ''}`
-
-    // const fullURL = queryURL + fNameURL + raceURL + cardTypeURL + levelURL + attributeURL + 'num=20&offset=1'
 
     try {
         const fullSearch = await axios.get(`${process.env.REACT_APP_YGO_API_URL}`)
@@ -114,5 +122,42 @@ export const fetchCards = async (fname: string, monsterType: string, race: strin
         return {}
     }
 
-  
+}
+
+export const createCard = async (userName: string, cardName: string, imageUrl: string, imageUrlSmall: string, desc: string, edition: string, condition: string, rarity: string, set: string, files: File[]) => {
+    try {
+        const data = new FormData()
+
+        for (var i in files) {
+            data.append(`file ${i}`, files[i])
+        }
+
+        data.append('cardName', cardName)
+        data.append('imageUrl', imageUrl)
+        data.append('imageUrlSmall', imageUrlSmall)
+        data.append('desc', desc)
+        data.append('edition', edition)
+        data.append('condition', condition)
+        data.append('rarity', rarity)
+        data.append('set', set)
+
+        const response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/addCard/${userName}`, data)
+        return response.data
+    }
+    catch(err) {
+        return 500
+    }
+
+}
+
+export const getUserCards = async (userName: string) => {
+
+    try {
+        const fullSearch = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/cards/${userName}`)
+        return fullSearch.data.message
+    }
+    catch(err) {
+        return []
+    }
+
 }

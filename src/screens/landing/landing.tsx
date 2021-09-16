@@ -16,10 +16,10 @@ const Landing = (props: any) => {
             <div className='landing-header'>
                 <div className='landing-text'>
                     <div className='landing-headline'>
-                        Lorem ipsum dolor sit amet
+                        Online Trading Simplified.
                     </div>
                     <div className='landing-subtitle'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                        With DeckTrade, it's never been easier to trade and purchase your favorite cards online.
                     </div>
                     <div className='button-landing'>
                         <Button text='Trade' color='#1679D3' textColor="#ffffff"></Button>
@@ -54,10 +54,10 @@ const Landing = (props: any) => {
             <div className='landing-info-panel'>
                 <div className='landing-info-text'>
                     <div className='landing-info-headline'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                        DeckTrade is committed to making your life easier, one card at a time
                     </div>
                     <div className='landing-info-subtext'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
+                        With DeckTrade, you can build an online collection of all of your cards and trade with others, from any of your favorite trading card games. DeckTrade makes it easy and fast to build your online portfolio.
                     </div>
                 </div>
                 {/* <Business></Business> */}
@@ -68,7 +68,7 @@ const Landing = (props: any) => {
                         Sign up for our mailing list
                     </div>
                     <div className='landing-submission-subtext'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
+                        Want to stay in the loop on all things Decktrade, as we continue to roll out interesting features? Enter your email and click sign up to get email notifications!
                     </div>
                 </div>
                 <div className='landing-submission-block'>

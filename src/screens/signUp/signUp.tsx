@@ -29,7 +29,7 @@ const SignUp = (props: any) => {
                 Sign up
             </div>
             <div className='sign-up-subtext'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas massa est, gravida non tellus in, laoreet eleifend eros. Maecenas neque lorem, laoreet nec fringilla vel, pulvinar sagittis mi. 
+                At DeckTrade, we make it fast and easy to build and show off your online trading card collection. Fill out the fields below to sign up now!
             </div>
             <Radio options={[
                 {

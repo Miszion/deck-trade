@@ -6,7 +6,7 @@ const Input = (props: any) => {
 
     return (
         <div className='input'>
-            <label style={{fontSize: fontSize}}>{label}</label>
+            {label && <label style={{fontSize: fontSize}}>{label}</label>}
             <input type={type} style={{fontSize: fontSize}} onChange={(e) => {
                 onChange(e.target.value)
             }}></input>

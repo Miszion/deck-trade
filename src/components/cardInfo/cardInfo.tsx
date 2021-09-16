@@ -4,6 +4,9 @@ import './cardInfo.scss'
 import {ReactComponent as Close} from '../../assets/images/close.svg'
 import Plus from '../../assets/images/plus'
 import Button from '../button/button'
+import { useCookies } from 'react-cookie'
+import { createCard } from '../../utils/requests'
+import Loading from '../loading/loading'
 
 const checkError = (set: string, rarity :string, condition:string, edition:string, photos: File[]) => {
 
@@ -31,6 +34,7 @@ const checkError = (set: string, rarity :string, condition:string, edition:strin
 const AddCard = (props: any) => {
 
     const { card, setSelectedCard } = props
+    const [cookies, setCookie] = useCookies(['token'])
 
     const [rarityList, setRarityList] = useState<
         {
@@ -69,6 +73,8 @@ const AddCard = (props: any) => {
         text: 'Add Card',
         color: '#50B104'
     })
+    const [loading, setLoading] = useState(false)
+
     useEffect(() => {
 
         const rarity = []
@@ -157,6 +163,7 @@ const AddCard = (props: any) => {
 
     return (
         <div className='card-info'>
+            {loading && <Loading transparent/>}
             <div className='card-info-modal'>
                 <div className='card-info-modal-content'>
                     <div className='card-info-bottom'>
@@ -217,7 +224,7 @@ const AddCard = (props: any) => {
                                 </div>
                             </div>
                             <div className='card-info-add-card-section'>
-                                <Button width="200px" textColor="#ffffff" color={addButton.color} text={addButton.text} onClick={() => {
+                                <Button width="200px" textColor="#ffffff" color={addButton.color} text={addButton.text} onClick={async () => {
                                     const error = checkError(setSelected, raritySelected, conditionSelected, editionSelected, photos)
 
                                     if (error) {
@@ -227,7 +234,17 @@ const AddCard = (props: any) => {
                                         })
                                     }
                                     else {
-                                        // add card to collection API
+                                        if (cookies.token.userName) {
+                                            setLoading(true)
+                                            const addCard = await createCard(cookies.token.userName, card.name, card.card_images[0].image_url, card.card_images[0].image_url_small, card.desc, editionSelected, conditionSelected, raritySelected, setSelected, photos)
+
+                                            if (addCard) {
+                                                setSelectedCard(undefined)
+                                            }
+                                            else {
+                                                setLoading(false)
+                                            }
+                                        }
                                     }
                                 }}/>
                             </div>
