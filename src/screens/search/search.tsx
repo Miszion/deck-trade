@@ -1,17 +1,16 @@
 import './search.scss'
-import Dropdown from '../dropDown/dropDown'
+import Dropdown from '../../components/dropDown/dropDown'
 import { useEffect, useState } from 'react'
 import { constructLevelList, constructTypeList, constructAttributeList, constructCardTypeList, constructMonsterTypeList } from '../../data/yugioh'
-import Input from '../input/input'
+import Input from '../../components/input/input'
 import {ReactComponent as Close} from '../../assets/images/close.svg'
 import { fetchCards } from '../../utils/requests'
 import { useHistory } from 'react-router'
 import { useCookies } from 'react-cookie'
 import { filterData } from '../../utils/filter'
-import AddCard from '../addCard/addCard'
+import CardInfo from '../../components/cardInfo/cardInfo'
 
 const Search = (props: any) => {
-
 
     const [category, setCategory] = useState('yugioh')
     const [level, setLevel] = useState('')
@@ -23,7 +22,7 @@ const Search = (props: any) => {
     const [cardList, setCardList] = useState<[]>([])
     const [cookies, setCookies] = useCookies(['token'])
     const [ogCardList, setOGCardList] = useState<[]>([])
-    const [modal, toggleModal] = useState(false)
+    const [selectedCard, setSelectedCard] = useState(undefined)
     
     const history = useHistory()
     useEffect(() => {
@@ -54,7 +53,7 @@ const Search = (props: any) => {
 
     return (
         <div className='search'>
-            {modal && <AddCard/>}
+            {selectedCard ? <CardInfo setSelectedCard={setSelectedCard} card={selectedCard}/> : 
             <div className='search-box'>
                 <div className='search-content'>
                     <Dropdown options={[
@@ -84,13 +83,15 @@ const Search = (props: any) => {
                     </div>
                 </div>
                 <div className='card-grid'>
-                    {cardList && cardList.length !== 0 && cardList.slice(0,20).map((element: any, i: number) => 
-                        <div className='card' onClick={() => {toggleModal(true)}}>
+                    {cardList && cardList.length !== 0 && cardList.slice(0,10).map((element: any, i: number) => 
+                        <div className='card' onClick={() => {
+                            setSelectedCard(element)
+                        }}>
                             <img src={element.card_images[0].image_url_small}></img>
                         </div>
                     )}
                 </div>
-            </div>
+            </div>}
         </div>
     )
 

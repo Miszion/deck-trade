@@ -11,7 +11,7 @@ import SignIn from './screens/signIn/signIn'
 import Profile from './screens/profile/profile'
 import TopScroll from './components/topScroll/topScroll'
 import { withCookies, useCookies } from 'react-cookie'
-import Search from './components/search/search'
+import Search from './screens/search/search'
 
 const App = (props: any) => {
 

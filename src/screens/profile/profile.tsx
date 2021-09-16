@@ -3,7 +3,7 @@ import { useCookies, withCookies } from 'react-cookie'
 import { useHistory, useParams } from 'react-router'
 import Loading from '../../components/loading/loading'
 import { getUser, uploadProfilePicture, uploadBannerPicture } from '../../utils/requests'
-import { ReactComponent as Plus } from '../../assets/images/plus.svg'
+import Plus from '../../assets/images/plus'
 import { ReactComponent as Pencil } from '../../assets/images/pencil.svg'
 import './profile.scss'
 
