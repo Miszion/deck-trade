@@ -18,6 +18,15 @@
     flex-direction: column;
 }
 
+.card-info-add-card-section {
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    max-width: 500px;
+    justify-content: center;
+    margin-bottom: 75px;
+}
+
 .card-info-upload-photo {
     position: relative;
     display: flex;
@@ -89,15 +98,10 @@
 
 }
 
-.card-info-modal-content {
-    margin-top: 35px;
-    margin-left: 100px;
-    margin-right: 100px;;
-}
 
 .card-info-close {
-    margin-bottom: 25px;
-    position: absolute;
+    margin-top: 35px;
+    margin-bottom: 35px;
     svg {
         cursor: pointer;
     }
@@ -109,11 +113,13 @@
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin-left: 100px;
+    margin-right: 100px;;
 }
 
 .card-info-content {
 
-    margin-top: 35px;
+    margin-top: 75px;
 
     .card-info-title {
         font-size: 1.5rem;
@@ -138,6 +144,7 @@
 .card-info-card-photos {
     
     margin-top: 25px;
+    margin-bottom: 25px;
 
     img {
         width: 150px;
@@ -151,20 +158,22 @@
 
 .card-info-image {
     
-    width: 350px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    min-width: 350px;
 
     img {
         max-height: 500px;
-        border-radius: 15px;
+        border-radius: 10px;
         @media screen and (max-width: 700px){
             max-height: 300px;
         }
 
     }
 
+    @media screen and (max-width: 700px){
+        min-width: unset;
+    }
 
 
 }

@@ -3,6 +3,31 @@ import Dropdown from '../dropDown/dropDown'
 import './cardInfo.scss'
 import {ReactComponent as Close} from '../../assets/images/close.svg'
 import Plus from '../../assets/images/plus'
+import Button from '../button/button'
+
+const checkError = (set: string, rarity :string, condition:string, edition:string, photos: File[]) => {
+
+    if (set === '') {
+        return 'Please select a card set'
+    }
+    else if (rarity === '') {
+        return 'Please select a card rarity'
+    }
+    else if (condition === '') {
+        return 'Please select a condition'
+    }
+    else if (edition === '') {
+        return 'Please select an edition'
+    }
+    else if (photos.length === 0) {
+        return 'Please add a card photo'
+    }
+    else {
+        return undefined
+    }
+}
+
+
 const AddCard = (props: any) => {
 
     const { card, setSelectedCard } = props
@@ -40,7 +65,10 @@ const AddCard = (props: any) => {
     const [editionSelected, setEdition] = useState('')
     const [conditionSelected, setCondition] = useState('')
     const [photos, setPhotos] = useState<File[]>([])
-
+    const [addButton, setAddButton] = useState({
+        text: 'Add Card',
+        color: '#50B104'
+    })
     useEffect(() => {
 
         const rarity = []
@@ -131,11 +159,11 @@ const AddCard = (props: any) => {
         <div className='card-info'>
             <div className='card-info-modal'>
                 <div className='card-info-modal-content'>
-                    <div className='card-info-close' onClick={() => setSelectedCard(undefined)}>
-                        <Close/>
-                    </div>
                     <div className='card-info-bottom'>
                         <div className='card-info-image'>
+                            <div className='card-info-close' onClick={() => setSelectedCard(undefined)}>
+                                <Close/>
+                            </div>
                             <img src={card.card_images[0].image_url} alt={card.name}/>
                         </div>
                         <div className='card-info-content'>
@@ -149,8 +177,8 @@ const AddCard = (props: any) => {
                                     <Dropdown options={rarityList} width="150px" fontSize="16px" label="Rarity" selector={setRarity}/>
                                 </div>
                                 <div className='card-info-dropdowns'>
-                                    <Dropdown options={editionList} width="150px" fontSize="16px" label="Condition" selector={setEdition}/>
-                                    <Dropdown options={conditionList} width="150px" fontSize="16px" label="Edition" selector={setCondition}/>
+                                    <Dropdown options={editionList} width="150px" fontSize="16px" label="Edition" selector={setEdition}/>
+                                    <Dropdown options={conditionList} width="150px" fontSize="16px" label="Condition" selector={setCondition}/>
                                 </div>
                             </div>}
                             <div className='card-info-description'>
@@ -168,19 +196,16 @@ const AddCard = (props: any) => {
                                 <div className='card-info-photo-space'>
                                         <div className='card-info-upload-photo'>
                                             <div className='card-info-upload-photo-svg-container'>
-                                                <Plus color="green"/>
+                                                <Plus color="#50B104"/>
                                             </div>
                                             <input type='file' accept='image/*' onChange={async (e) => { 
                                                 if (e.target.files) {
                                                     let fileArray = []
-                                                    
                                                     for (var i in photos) {
                                                         fileArray.push(photos[i])
                                                     }
-
                                                     fileArray.push(e.target.files[0])
                                                     setPhotos(fileArray)
-
                                                 }}}
                                             ></input>
                                         </div>
@@ -190,6 +215,21 @@ const AddCard = (props: any) => {
                                             )}
                                         </div>
                                 </div>
+                            </div>
+                            <div className='card-info-add-card-section'>
+                                <Button width="200px" textColor="#ffffff" color={addButton.color} text={addButton.text} onClick={() => {
+                                    const error = checkError(setSelected, raritySelected, conditionSelected, editionSelected, photos)
+
+                                    if (error) {
+                                        setAddButton({
+                                            color: '#C91414',
+                                            text: error
+                                        })
+                                    }
+                                    else {
+                                        // add card to collection API
+                                    }
+                                }}/>
                             </div>
                         </div>
                     </div>
