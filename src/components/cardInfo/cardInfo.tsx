@@ -217,8 +217,8 @@ const AddCard = (props: any) => {
                                             ></input>
                                         </div>
                                         <div className='card-info-card-photos'>
-                                            {photos.map((element) => 
-                                                <img src={element && URL.createObjectURL(element)}></img>
+                                            {photos.map((element, i:number) => 
+                                                <img key={i} src={element && URL.createObjectURL(element)}></img>
                                             )}
                                         </div>
                                 </div>

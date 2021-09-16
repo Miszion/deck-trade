@@ -18,8 +18,8 @@ const Dropdown = (props: any) => {
                 <Triangle/>
             </div>
             {menu && <div className='dropdown-options' style={{width: width}}>
-                {options.map((i : any) => 
-                    <div className='dropdown-option' onClick={() => {
+                {options.map((i : any, num: number) => 
+                    <div className='dropdown-option' key={num} onClick={() => {
                         setSelected(i)
                         selector(i.value)
                         toggleMenu(!menu)

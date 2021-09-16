@@ -1,0 +1,129 @@
+.profile-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    opacity: 0;
+    background-color: #fafafa;
+    animation: fadeIn .5s ease-out forwards;
+}
+
+.profile-card-modal {
+    background-color: #fafafa;
+    width: 100%;
+}
+
+.profile-card-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.profile-card-photos {
+    
+    margin-top: 25px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    img {
+        width: 150px;
+        height: 200px;
+        margin-left: 5px;
+        margin-right: 5px;
+        border-radius: 3px;
+        margin-bottom: 10px;
+    }
+
+}
+
+
+.profile-card-image {
+    display: flex;
+    flex-direction: column;
+    min-width: 350px;
+
+    img {
+        max-height: 500px;
+        border-radius: 10px;
+        @media screen and (max-width: 700px){
+            max-height: 300px;
+        }
+
+    }
+
+    @media screen and (max-width: 700px){
+        min-width: unset;
+    }
+}
+
+.profile-card-close {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    svg {
+        cursor: pointer;
+    }
+}
+
+.profile-card-content {
+    margin-top: 75px;
+
+    .profile-card-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+    }
+}
+
+.profile-card-info-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 35px;
+    font-weight: 600;
+}
+
+.profile-card-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-card-description {
+
+    &-title {
+        font-weight: 600;
+        text-align: center;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        font-size: 1.2rem;
+    }
+
+    &-text {
+        font-weight: 500;
+        text-align: center;
+        max-width: 500px;
+        line-height: 1.9;
+    }
+
+}
+
+.profile-card-photo-space {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 75px;
+    max-width: 500px;
+}
+
+.profile-card-photo-title {
+    margin-top: 35px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+}

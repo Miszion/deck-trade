@@ -8,6 +8,7 @@ import './profile.scss'
 import Dropdown from '../../components/dropDown/dropDown'
 import Input from '../../components/input/input'
 import Button from '../../components/button/button'
+import ProfileCard from '../../components/profileCard/profileCard'
 
 const Profile = (props: any) => {
 
@@ -38,6 +39,7 @@ const Profile = (props: any) => {
     const [category, setCategory] = useState('yugioh')
     const [searchString, setSearchString] = useState('')
     const [description, setDescription] = useState('')
+    const [cardSelected, selectCard]= useState(undefined)
 
     useEffect(() => {
         
@@ -108,96 +110,99 @@ const Profile = (props: any) => {
             {loading ? <Loading transparent/> : (
             <div className='profile-loaded'>
                 {transparentLoading && <Loading transparent/>}
-                <div className='profile-banner'>
-                {userData && cookies.token && cookies.token.userName === userData.user_name && <input type='file' accept="image/*" onChange={async (e) => { e.target.files && setBannerPic(e.target.files[0]) }}></input>}
-                {userData.banner_picture && <img src={`${process.env.REACT_APP_S3_USERS_URL}/${userData.banner_picture}?t=${new Date().getTime()}`} alt='Banner Picture'></img>}
-                </div>
-                <div className='profile-content'>
-                    <div className='profile-info'>
-                        <div className='profile-image'>
-                            {userData && cookies.token && cookies.token.userName === userData.user_name && <input type='file' accept="image/*" onChange={async (e) => { e.target.files && setProfilePic(e.target.files[0]) }}></input>}
-                            {userData.profile_picture && <img src={`${process.env.REACT_APP_S3_USERS_URL}/${userData.profile_picture}?t=${new Date().getTime()}`} alt='Profile Picture'></img>}
-                        </div>
-                        <div className='profile-text'>
-                            <div className='profile-username'>
-                                <div className='profile-username-header'>Username</div>
-                                {userData.user_name}
-                            </div>
-                            <div className='profile-about'>
-                                <div className='profile-about-header'>
-                                    About
-                                </div>
-                                <div className='profile-about-description'>
-                                    <div className='input-description'>
-                                        {(cookies.token.userName === userData.user_name && editDescription) ? <textarea onChange={(e) => {setDescription(e.target.value)}} value={description || userData.description}></textarea> 
-                                        : userData.description}
-                                    </div>
-                                    {cookies.token.userName === userData.user_name && <div className='input-pencil' onClick={async () => {
-                                        if (editDescription) {
-                                            userData.description = description
-                                            setTransparentLoading(true)
-                                            await updateUserDescription(userName, userData.description, cookies.token.token)
-                                            setTransparentLoading(false)
-                                            setEditDescription(!editDescription)
-                                        }
-                                        else {
-                                            setEditDescription(!editDescription)
-                                        }}}>
-                                        <Pencil/>
-                                    </div>}
-                                </div>
-                            </div>
-                        </div>
+                {cardSelected ? <ProfileCard card={cardSelected} setSelectedCard={selectCard}/> :
+                <div className='profile-container'>
+                    <div className='profile-banner'>
+                    {userData && cookies.token && cookies.token.userName === userData.user_name && <input type='file' accept="image/*" onChange={async (e) => { e.target.files && setBannerPic(e.target.files[0]) }}></input>}
+                    {userData.banner_picture && <img src={`${process.env.REACT_APP_S3_USERS_URL}/${userData.banner_picture}?t=${new Date().getTime()}`} alt='Banner Picture'></img>}
                     </div>
-                    <div className='profile-collection'>
-                        <div className='profile-collection-header'>
-                            Collections
-                        </div>
-                        <div className='profile-search'>
-                            <Dropdown options={[
-                                {
-                                    name: "Yu-Gi-Oh",
-                                    value: "yugioh"
-                                },
-                                {
-                                    name: "Pokemon",
-                                    value: "pokemon"
-                                }
-                            ]}  selector={setCategory} width='150px' fontSize='16px'/>
-                            <Input type="text" onChange={setSearchString}/>
+                    <div className='profile-content'>
+                        <div className='profile-info'>
+                            <div className='profile-image'>
+                                {userData && cookies.token && cookies.token.userName === userData.user_name && <input type='file' accept="image/*" onChange={async (e) => { e.target.files && setProfilePic(e.target.files[0]) }}></input>}
+                                {userData.profile_picture && <img src={`${process.env.REACT_APP_S3_USERS_URL}/${userData.profile_picture}?t=${new Date().getTime()}`} alt='Profile Picture'></img>}
+                            </div>
+                            <div className='profile-text'>
+                                <div className='profile-username'>
+                                    <div className='profile-username-header'>Username</div>
+                                    {userData.user_name}
+                                </div>
+                                <div className='profile-about'>
+                                    <div className='profile-about-header'>
+                                        About
+                                    </div>
+                                    <div className='profile-about-description'>
+                                        <div className='input-description'>
+                                            {(cookies.token.userName === userData.user_name && editDescription) ? <textarea onChange={(e) => {setDescription(e.target.value)}} value={'' || description || userData.description}></textarea> 
+                                            : userData.description}
+                                        </div>
+                                        {cookies.token.userName === userData.user_name && <div className='input-pencil' onClick={async () => {
+                                            if (editDescription) {
+                                                userData.description = description
+                                                setTransparentLoading(true)
+                                                await updateUserDescription(userName, userData.description, cookies.token.token)
+                                                setTransparentLoading(false)
+                                                setEditDescription(!editDescription)
+                                            }
+                                            else {
+                                                setEditDescription(!editDescription)
+                                            }}}>
+                                            <Pencil/>
+                                        </div>}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div className='profile-collection'>
-                            <div className='profile-card-grid'>
-                                {cards.map((element: any) => {
-                                    if (searchString === '') {
-                                        return (
-                                            <div className='profile-card'>
-                                                <img src={element.image_url_small} alt={element.name}/>
-                                            </div>
-                                        )
+                            <div className='profile-collection-header'>
+                                Collections
+                            </div>
+                            <div className='profile-search'>
+                                <Dropdown options={[
+                                    {
+                                        name: "Yu-Gi-Oh",
+                                        value: "yugioh"
+                                    },
+                                    {
+                                        name: "Pokemon",
+                                        value: "pokemon"
                                     }
-                                    else {
-                                        if (element.name.toLowerCase().startsWith(searchString.toLowerCase())) {
+                                ]}  selector={setCategory} width='150px' fontSize='16px'/>
+                                <Input type="text" onChange={setSearchString}/>
+                            </div>
+                            <div className='profile-collection'>
+                                <div className='profile-card-grid'>
+                                    {cards.map((element: any, i: number) => {
+                                        if (searchString === '') {
                                             return (
-                                                <div className='profile-card'>
+                                                <div className='profile-card' key={i} onClick={async () => {selectCard(element)}}>
                                                     <img src={element.image_url_small} alt={element.name}/>
                                                 </div>
                                             )
                                         }
                                         else {
-                                            return null
+                                            if (element.name.toLowerCase().startsWith(searchString.toLowerCase())) {
+                                                return (
+                                                    <div className='profile-card' key={i} onClick={async () => {selectCard(element)}}>
+                                                        <img src={element.image_url_small} alt={element.name}/>
+                                                    </div>
+                                                )
+                                            }
+                                            else {
+                                                return null
+                                            }
                                         }
                                     }
-                                }
-                                )}
+                                    )}
+                                </div>
+                                {cookies.token.userName === userName && <div className='add-card' onClick={() => history.push('/search')}>
+                                    <Button color='#8B16D3' textColor='#ffffff' text='Add a Card'/>
+                                </div>}
                             </div>
-                            {cookies.token.userName === userName && <div className='add-card' onClick={() => history.push('/search')}>
-                                <Button color='#8B16D3' textColor='#ffffff' text='Add a Card'/>
-                            </div>}
                         </div>
                     </div>
-                </div>
-            </div>)}
+            </div>}
+        </div>)}
         </div>
     )
 

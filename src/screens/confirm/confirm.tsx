@@ -19,7 +19,7 @@ const Confirm = (props: any) => {
                 Please verify your email
             </div>
             <div className='confirm-subtext'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas massa est, gravida non tellus in, laoreet eleifend eros. Maecenas neque lorem, laoreet nec fringilla vel, pulvinar sagittis mi. 
+                To help keep your information safe, we ask that you complete a multi-factor authentication method to futher protect your information in the future. You should recieve an email momentarily in the email you used to sign up for DeckTrade. 
             </div>
             <div className='verify-headline'>
                 Enter the verification email

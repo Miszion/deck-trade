@@ -84,7 +84,7 @@ const Search = (props: any) => {
                 </div>
                 <div className='card-grid'>
                     {cardList && cardList.length !== 0 && cardList.slice(0,10).map((element: any, i: number) => 
-                        <div className='card' onClick={() => {
+                        <div className='card' key={i} onClick={() => {
                             setSelectedCard(element)
                         }}>
                             <img src={element.card_images[0].image_url_small}></img>
