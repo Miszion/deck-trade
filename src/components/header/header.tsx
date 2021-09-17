@@ -46,7 +46,7 @@ const Header = (props: any) => {
                     </Link>
                 </div>
             </div>
-            <div className='side-menu' style={{left: menu ? '0px': '-300px'}}>
+            <div className='side-menu' style={{left: menu ? '0px': '-301px'}}>
                 <div className='menu-items-mobile'>
                     <Link to='/' className='header-item'>Trade</Link>
                     <Link to={cookie.token ? `/search` : '/signin'} className='header-item'>Collections</Link>
